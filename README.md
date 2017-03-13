@@ -14,3 +14,6 @@ Usage :
 ~~~~
 python bcbp.py <number of pieces> <group size> 
 ~~~~
+
+To do : 
+Replace probstat (obsolete) by another (supported) python package ? 
