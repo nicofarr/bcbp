@@ -11,4 +11,6 @@ Requirements :
 
 Usage : 
 
+~~~~
 python bcbp.py <number of pieces> <group size> 
+~~~~
