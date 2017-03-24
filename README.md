@@ -7,6 +7,7 @@ Initial python implementation by Hamish Allan, 2007 - 2014
 Requirements : 
 
 - probstat http://probstat.sourceforge.net/
+- numpy
 
 
 Usage : 
