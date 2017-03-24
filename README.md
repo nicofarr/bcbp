@@ -7,3 +7,13 @@ Initial python implementation by Hamish Allan, 2007 - 2014
 Requirements : 
 
 - probstat http://probstat.sourceforge.net/
+
+
+Usage : 
+
+~~~~
+python bcbp.py <number of pieces> <group size> 
+~~~~
+
+To do : 
+Replace probstat (obsolete) by another (supported) python package ? 
