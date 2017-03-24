@@ -161,7 +161,15 @@ def main():
     print node.groups
     print node.distrib
     
-    bcbp_func.bcbp_secondpass(node.groups)
+    bal_groups = bcbp_func.bcbp_secondpass(node.groups)
+    
+    print "-------------final result-------------"
+    if len(bal_groups) == 0:
+        print "failed"
+    else:
+        bcbp_func.write_stimlist(bal_groups)
+    
+        print "-------------SUCESSFUL !-------------"
 
 if __name__ == '__main__':
     main()

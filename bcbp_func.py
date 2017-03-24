@@ -6,6 +6,7 @@ import probstat
 import random
 from utils import PriorityQueue
 from sets import Set
+import numpy as np 
 
 def triad_perms(triad):
     return [''.join(x) for x in probstat.Permutation([c for c in triad])]
@@ -60,6 +61,7 @@ def bcbp_secondpass(groups):
     while len(groups) > 0:
         
         failures = []
+        bal_groups = []
 
         for group in groups:
 
@@ -94,6 +96,7 @@ def bcbp_secondpass(groups):
 #                    print
 #                    print 'success!', len(visited)
                     print node.group
+                    bal_groups.append(node.group)
                     print
                     break
 
@@ -105,5 +108,32 @@ def bcbp_secondpass(groups):
 
         groups = failures
         print 'looping', len(failures)
+        return bal_groups
+
+import time 
+import os 
+
+def write_stimlist(bal_groups):
+    bg_arr = np.stack(bal_groups).T
+    
+    
+    #Create target directory 
+    dirname = time.strftime("%d_%b_%Y_%H_%M_%S", time.localtime())
+ 
+    os.makedirs(dirname)
 
 
+    if bg_arr.ndim==1:
+        filename=os.path.join(dirname,"01_stimlist.txt")
+        print "writing unique file %s" % filename
+        f=open(filename,'w')
+        [f.write('%d %d %d;\n' % (ord(x[0])-64,ord(x[1])-64,ord(x[2])-64)) for x in bg_arr]
+        f.close()
+    else:
+        for (nsubj,cursubj) in enumerate(bg_arr):
+            filename=os.path.join(dirname,"%02d_stimlist.txt"%(nsubj+1))
+            print "writing file %s" % filename
+            f=open(filename,'w')
+            [f.write('%d %d %d;\n' % (ord(x[0])-64,ord(x[1])-64,ord(x[2])-64)) for x in cursubj]
+            f.close()
+    
