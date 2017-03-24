@@ -129,6 +129,13 @@ def write_stimlist(bal_groups):
         f=open(filename,'w')
         [f.write('%d %d %d;\n' % (ord(x[0])-64,ord(x[1])-64,ord(x[2])-64)) for x in bg_arr]
         f.close()
+    elif bg_arr.shape[1]==1:
+        print bg_arr
+        filename=os.path.join(dirname,"01_stimlist.txt")
+        print "writing unique file %s" % filename
+        f=open(filename,'w')
+        [f.write('%d %d %d;\n' % (ord(x[0])-64,ord(x[1])-64,ord(x[2])-64)) for x in bg_arr[0]]
+        f.close()
     else:
         for (nsubj,cursubj) in enumerate(bg_arr):
             filename=os.path.join(dirname,"%02d_stimlist.txt"%(nsubj+1))
