@@ -114,7 +114,7 @@ import time
 import os 
 
 def write_stimlist(bal_groups):
-    bg_arr = np.stack(bal_groups).T
+    bg_arr = np.stack(bal_groups)
     
     
     #Create target directory 
